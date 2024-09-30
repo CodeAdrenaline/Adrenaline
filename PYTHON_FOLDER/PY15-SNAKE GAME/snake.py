@@ -1,4 +1,6 @@
 from turtle import Turtle
+
+
 STARTING_POSITIONS = [(0, 0), (-20, 0), (-40, 0)]
 MOVE_DISTANCE = 20
 UP = 90
@@ -24,6 +26,13 @@ class Snake:
         new_segment.penup()
         new_segment.goto(position)
         self.segments.append(new_segment)
+
+    def reset(self):
+        for seg in self.segments:
+            seg.goto(1000,1000)#clear the old snake segments
+        self.segments.clear() # clear all the snake segments
+        self.create_snake()#after clearing, create a new snake to restart the game
+        self.head=self.segments[0]#setting the head of the snake
 
     def extend(self):
         self.add_segment(self.segments[-1].position())
